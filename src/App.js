@@ -4,7 +4,7 @@ const App = () => {
   const [stage, setStage] = useState(0);
   const [riddleAnswer, setRiddleAnswer] = useState("");
   const [foundItems, setFoundItems] = useState([]);
-  const [showVideo, setShowVideo] = useState(false);
+  const [showLink, setShowLink] = useState(false);
 
   const handleStart = () => setStage(1);
   
@@ -28,7 +28,7 @@ const App = () => {
   };
 
   const allItemsFound = foundItems.length === 3;
-  const handlePlayVideo = () => setShowVideo(true);
+  const handleShowLink = () => setShowLink(true);
 
   // Стили прямо в компоненте
   const styles = {
@@ -64,6 +64,19 @@ const App = () => {
       fontWeight: 'bold',
       marginTop: '20px',
       boxShadow: '0 5px 15px rgba(0, 0, 0, 0.3)',
+      transition: 'transform 0.2s, box-shadow 0.2s'
+    },
+    linkButton: {
+      background: 'linear-gradient(45deg, #FF416C, #FF4B2B)',
+      color: 'white',
+      border: 'none',
+      padding: '20px 40px',
+      fontSize: '24px',
+      borderRadius: '50px',
+      cursor: 'pointer',
+      fontWeight: 'bold',
+      marginTop: '20px',
+      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.4)',
       transition: 'transform 0.2s, box-shadow 0.2s'
     },
     input: {
@@ -194,7 +207,7 @@ const App = () => {
         </div>
       )}
 
-      {/* Stage 3: Video */}
+      {/* Stage 3: Link instead of Video */}
       {stage === 3 && (
         <div style={styles.card}>
           <div style={{ fontSize: '60px', marginBottom: '20px' }}>🎂</div>
@@ -203,30 +216,36 @@ const App = () => {
             Нажми на торт, чтобы открыть подарок
           </p>
           
-          {!showVideo ? (
+          {!showLink ? (
             <button 
-              style={{ ...styles.button, padding: '20px 40px', fontSize: '24px' }}
-              onClick={handlePlayVideo}
+              style={styles.linkButton}
+              onClick={handleShowLink}
               onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
               onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
             >
               🎂 Открыть подарок
             </button>
           ) : (
-            <div style={{ width: '100%', height: '300px', background: '#000', borderRadius: '10px', overflow: 'hidden' }}>
-              <iframe
-                src="https://rutube.ru/video/private/a46301682adea5c3edde10d34a154c75/?p=wm1oTQvbseRlU_-mtNEYGg"
-                title="Поздравление"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+            <div style={{ marginTop: '20px' }}>
+              <p style={{ fontSize: '1.2rem', marginBottom: '20px' }}>
+                Вот твоё особое поздравление! 🎁
+              </p>
+              <a 
+                href="https://disk.yandex.ru/d/9_UFROlgP4CUtg" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{
+                  ...styles.linkButton,
+                  textDecoration: 'none',
+                  display: 'inline-block'
+                }}
+              >
+                🎥 Посмотреть поздравление
+              </a>
             </div>
           )}
           
-          {showVideo && (
+          {showLink && (
             <p style={{ fontSize: '1.5rem', marginTop: '20px', color: '#FFD700' }}>
               Спасибо, что прошёл путь до конца! 🥳
             </p>
