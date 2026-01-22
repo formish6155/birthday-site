@@ -215,7 +215,7 @@ const App = () => {
           ) : (
             <div style={{ width: '100%', height: '300px', background: '#000', borderRadius: '10px', overflow: 'hidden' }}>
               <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
+                src="https://rutube.ru/video/private/a46301682adea5c3edde10d34a154c75/?p=wm1oTQvbseRlU_-mtNEYGg"
                 title="Поздравление"
                 width="100%"
                 height="100%"
